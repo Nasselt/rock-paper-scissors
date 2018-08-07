@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript assignments 1</title>
+</head>
+
+<body>
+    <script>
+
+
+        function computerPlay() {
+            let computerMove;
+            random = Math.floor(Math.random() * 3)
+            if (random == 0) {
+                computerMove = "rock"; 
+            } else if (random == 1) {
+                computerMove = "paper";
+            } else {
+                computerMove = "scissors";
+            }
+            return computerMove;
+        }
+
+        function play(userMove, computerMove){
+            let result;
+            if (userMove == computerMove) {
+                result = 0;
+            } else if (userMove == "rock" && computerMove == "scissors") {
+                result = 1;
+            } else if (userMove == "rock" && computerMove == "paper") {
+                result = 2;
+            } else if (userMove == "paper" && computerMove == "rock") {
+                result = 1;
+            } else if (userMove == "paper" && computerMove == "scissors") {
+                result = 2;
+            } else if (userMove == "scissors" && computerMove == "paper") {
+                result = 1;
+            } else {
+                result = 2;
+            }
+            return result;
+        }  
+
+        function game() {
+            let userWon = 0, computerWon = 0, winner = 0;
+            for (let i = 0; i < 5; i++) {
+                userMove = prompt("Please choose");
+                userMove = userMove.toLowerCase();
+                computerMove = computerPlay();
+                let roundWinner = play(userMove, computerMove);
+                console.log(roundWinner);
+                if (roundWinner == 1) {
+                    userWon++;
+                } else if (roundWinner == 2) {
+                    computerWon++;
+                }
+            }
+
+            if (userWon > computerWon) {
+                winner = "User has won"; 
+            } else if (userWon < computerWon) {
+                winner = "Computer has won";
+            } else {
+                winner = "Its a tie";
+            }
+            return winner;
+        }
+        console.log(game());
+    </script>
+</body>
+
+</html>
